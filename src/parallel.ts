@@ -145,8 +145,7 @@ export abstract class ParallelTask<
         } else {
           // Ensure results array is large enough
           while (results.length <= index) {
-            // @ts-expect-error - this is just placeholder for the result
-            results.push(null);
+            results.push(undefined as ExecResult);
           }
           results[index] = result!;
         }
