@@ -67,6 +67,39 @@ const result = await flow.execute({
 console.log(result); // { name: 'John Doe', age: 25, email: 'john@example.com', processed: true }
 ```
 
+## Import Options
+
+TinyTask supports both named imports and a default export for convenience:
+
+### Named Imports (Recommended)
+```typescript
+import { Task, Flow, chainTasks, ParallelTask } from 'tinytask';
+```
+
+### Default Export
+```typescript
+import Tiny from 'tinytask';
+
+// Use as Tiny.Task, Tiny.Flow, etc.
+class MyTask extends Tiny.Task {
+  // ...
+}
+
+const flow = Tiny.chainTasks(task1, task2);
+```
+
+The default export provides access to all main components:
+- `Tiny.Task` - The base Task class
+- `Tiny.Flow` - The Flow class
+- `Tiny.ParallelTask` - The ParallelTask class
+- `Tiny.chainTasks` - Utility function to chain tasks
+- `Tiny.createFlow` - Utility function to create flows
+- `Tiny.createParallelFlow` - Utility function to create parallel flows
+- `Tiny.createParallelTask` - Utility function to create parallel tasks
+- `Tiny.logger` - Main logger instance
+- `Tiny.createTaskLogger` - Function to create task-specific loggers
+- `Tiny.createFlowLogger` - Function to create flow-specific loggers
+
 ## Core Concepts
 
 ### Task
@@ -323,6 +356,7 @@ npm run test:watch
 
 See the `examples/` directory for more detailed examples including:
 
+- **Tiny Import Example** (`examples/tiny-import-example.js` / `examples/tiny-import-example.ts`) - Demonstrates using the default export with `import Tiny from 'tinytask'`
 - **Logging Example** (`examples/logging-example.js` / `examples/logging-example.ts`) - Demonstrates structured logging with Pino
 - Basic task chaining
 - Conditional routing
