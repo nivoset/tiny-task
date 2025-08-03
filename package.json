@@ -1,0 +1,64 @@
+{
+  "name": "tinytask",
+  "version": "1.0.0",
+  "description": "A lightweight, modular task flow system with parallel processing capabilities",
+  "main": "dist/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./parallel": {
+      "import": "./dist/parallel.js",
+      "types": "./dist/parallel.d.ts"
+    },
+    "./flow": {
+      "import": "./dist/flow.js",
+      "types": "./dist/flow.d.ts"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run build && node --test --experimental-test-coverage test/*.test.js",
+    "test:watch": "node --test --watch",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build && npm test",
+    "lint": "eslint src/**/*.ts || true",
+    "lint:fix": "eslint src/**/*.ts --fix || true"
+  },
+  "keywords": [
+    "task",
+    "flow",
+    "parallel",
+    "typescript",
+    "async",
+    "pipeline",
+    "workflow",
+    "concurrency"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "pino-pretty": "^10.3.1"
+  },
+  "dependencies": {
+    "ollama": "^0.5.16",
+    "pino": "^8.17.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
