@@ -15,13 +15,13 @@ A lightweight, modular task flow system with parallel processing capabilities bu
 ## Installation
 
 ```bash
-npm install tinytask
+npm install tiny-task
 ```
 
 ## Quick Start
 
 ```typescript
-import { Task, Flow, chainTasks } from 'tinytask';
+import { Task, Flow, chainTasks } from 'tiny-task';
 
 // Define your data interface
 interface UserData {
@@ -73,12 +73,12 @@ TinyTask supports both named imports and a default export for convenience:
 
 ### Named Imports (Recommended)
 ```typescript
-import { Task, Flow, chainTasks, ParallelTask } from 'tinytask';
+import { Task, Flow, chainTasks, ParallelTask } from 'tiny-task';
 ```
 
 ### Default Export
 ```typescript
-import Tiny from 'tinytask';
+import Tiny from 'tiny-task';
 
 // Use as Tiny.Task, Tiny.Flow, etc.
 class MyTask extends Tiny.Task {
@@ -147,7 +147,7 @@ class MyTask extends Task<SharedData, PreparedData, ExecResult> {
 A `Flow` orchestrates the execution of multiple tasks in sequence:
 
 ```typescript
-import { Flow, chainTasks, createFlow } from 'tinytask';
+import { Flow, chainTasks, createFlow } from 'tiny-task';
 
 // Method 1: Chain tasks together
 const flow = chainTasks(task1, task2, task3);
@@ -166,7 +166,7 @@ const result = await flow.execute(initialData);
 For processing multiple items concurrently:
 
 ```typescript
-import { ParallelTask, createParallelTask } from 'tinytask';
+import { ParallelTask, createParallelTask } from 'tiny-task';
 
 // Custom parallel task
 class UserProcessingTask extends ParallelTask<UserData, User, ProcessedUser> {
@@ -272,7 +272,7 @@ TinyTask uses Pino for structured logging with configurable levels. The logging 
 ### Usage
 
 ```typescript
-import { logger, createTaskLogger, createFlowLogger } from 'tinytask';
+import { logger, createTaskLogger, createFlowLogger } from 'tiny-task';
 
 // Use the main logger
 logger.info('Application started');
@@ -356,7 +356,7 @@ npm run test:watch
 
 See the `examples/` directory for more detailed examples including:
 
-- **Tiny Import Example** (`examples/tiny-import-example.js` / `examples/tiny-import-example.ts`) - Demonstrates using the default export with `import Tiny from 'tinytask'`
+- **Tiny Import Example** (`examples/tiny-import-example.js` / `examples/tiny-import-example.ts`) - Demonstrates using the default export with `import Tiny from 'tiny-task'`
 - **Logging Example** (`examples/logging-example.js` / `examples/logging-example.ts`) - Demonstrates structured logging with Pino
 - Basic task chaining
 - Conditional routing
@@ -372,6 +372,60 @@ See the `examples/` directory for more detailed examples including:
 4. Add tests for new functionality
 5. Ensure all tests pass
 6. Submit a pull request
+
+## CI/CD
+
+TinyTask uses GitHub Actions for continuous integration and deployment:
+
+### CI Pipeline
+
+The CI pipeline runs on all branches and pull requests:
+
+- **Linting**: ESLint checks for code quality and consistency
+- **Testing**: Runs all unit tests with Node.js built-in test runner
+- **Building**: Compiles TypeScript to JavaScript
+- **Security**: Runs npm audit for security vulnerabilities
+- **Matrix Testing**: Tests against Node.js 18.x, 20.x, and 22.x
+
+### Deployment Pipeline
+
+The deployment pipeline runs only on the `main` branch:
+
+- **Automatic Publishing**: Publishes to NPM when changes are pushed to main
+- **Version Checking**: Prevents duplicate version publishing
+- **Production Environment**: Uses production environment for deployment
+
+### Setup for NPM Deployment
+
+To enable automatic NPM deployment:
+
+1. **Create NPM Token**:
+   - Go to [NPM Settings](https://www.npmjs.com/settings)
+   - Create an access token with publish permissions
+
+2. **Add GitHub Secret**:
+   - Go to your GitHub repository settings
+   - Navigate to Secrets and Variables → Actions
+   - Add a new secret named `NPM_TOKEN` with your NPM access token
+
+3. **Update Repository URLs**:
+   - Update the `repository`, `bugs`, and `homepage` fields in `package.json` with your actual GitHub repository URL
+
+### Manual Deployment
+
+To manually deploy a new version:
+
+```bash
+# Update version in package.json
+npm version patch  # or minor, major
+
+# Build and test
+npm run build
+npm test
+
+# Publish to NPM
+npm publish
+```
 
 ## License
 

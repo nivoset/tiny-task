@@ -1,5 +1,5 @@
 {
-  "name": "tinytask",
+  "name": "tiny-task",
   "version": "1.0.0",
   "description": "A lightweight, modular task flow system with parallel processing capabilities",
   "main": "dist/index.js",
@@ -31,7 +31,8 @@
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run build && npm test",
     "lint": "eslint src/**/*.ts || true",
-    "lint:fix": "eslint src/**/*.ts --fix || true"
+    "lint:fix": "eslint src/**/*.ts --fix || true",
+    "release": "node scripts/release.js"
   },
   "keywords": [
     "task",
@@ -43,8 +44,16 @@
     "workflow",
     "concurrency"
   ],
-  "author": "",
+  "author": "bbrwfk",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nivoset/tiny-task.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nivoset/tiny-task/issues"
+  },
+  "homepage": "https://github.com/nivoset/tiny-task#readme",
   "devDependencies": {
     "@types/node": "^20.0.0",
     "typescript": "^5.0.0",
