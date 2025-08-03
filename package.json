@@ -25,8 +25,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "npm run build && node --test --experimental-test-coverage test/*.test.js",
-    "test:watch": "node --test --watch",
+    "test": "npm run build && LOG_LEVEL=error node --test --experimental-test-coverage test/*.test.js",
+    "test:watch": "LOG_LEVEL=error node --test --watch",
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "prepublishOnly": "npm run build && npm test",
@@ -68,6 +68,6 @@
     "pino": "^8.17.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   }
 }

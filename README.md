@@ -352,6 +352,8 @@ npm test
 npm run test:watch
 ```
 
+**Note**: TinyTask requires Node.js 22.x or higher for optimal performance and features.
+
 ## Examples
 
 See the `examples/` directory for more detailed examples including:
@@ -385,7 +387,7 @@ The CI pipeline runs on all branches and pull requests:
 - **Testing**: Runs all unit tests with Node.js built-in test runner
 - **Building**: Compiles TypeScript to JavaScript
 - **Security**: Runs npm audit for security vulnerabilities
-- **Matrix Testing**: Tests against Node.js 18.x, 20.x, and 22.x
+- **Matrix Testing**: Tests against Node.js 22.x
 
 ### Deployment Pipeline
 
