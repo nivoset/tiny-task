@@ -9,6 +9,10 @@ dist/
 build/
 *.tsbuildinfo
 
+# Examples compilation
+examples/*.js
+examples/dist/
+
 # Environment variables
 .env
 .env.local

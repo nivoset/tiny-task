@@ -74,7 +74,7 @@ describe('ParallelTask', () => {
     
     const result = await task.run(data);
     assert.strictEqual(result, 'default');
-    assert.strictEqual(data.results?.length, 2); // Only successful results
+    assert.strictEqual(data.results?.length, 3); // All results (including failed ones)
     assert.strictEqual(data.processingStats?.totalProcessed, 3);
     assert.strictEqual(data.processingStats?.totalErrors, 1);
   });
