@@ -1,0 +1,44 @@
+{
+  "name": "@tiny/logger",
+  "version": "1.0.0",
+  "description": "A lightweight logging system for the @tiny ecosystem",
+  "main": "dist/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run build && cross-env LOG_LEVEL=error node --test --experimental-test-coverage test/*.test.js",
+    "test:watch": "cross-env LOG_LEVEL=error node --test --watch",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build && npm test",
+    "lint": "eslint src/**/*.ts --no-error-on-unmatched-pattern || true",
+    "lint:fix": "eslint src/**/*.ts --fix || true"
+  },
+  "keywords": [
+    "logger",
+    "logging",
+    "typescript",
+    "pino"
+  ],
+  "author": "bbrwfk",
+  "license": "ISC",
+  "dependencies": {
+    "pino": "^8.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "cross-env": "^7.0.3"
+  }
+} 

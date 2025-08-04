@@ -1,4 +1,4 @@
-import { createTaskLogger } from './logger.js';
+import { createTaskLogger } from '@tiny/core';
 
 // Base interface for all tasks
 export interface ITask<SharedData extends Record<string, unknown> = Record<string, unknown>> {

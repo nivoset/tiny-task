@@ -1,5 +1,5 @@
-import type { ITask } from './task.js';
-import { createFlowLogger } from './logger.js';
+import type { ITask } from '@tiny/task';
+import { createFlowLogger } from '@tiny/core';
 
 // Utility class for creating flows
 export class Flow<SharedData extends Record<string, unknown> = Record<string, unknown>> {

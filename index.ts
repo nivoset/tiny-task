@@ -1,8 +1,8 @@
 // Core Task system
-export { Task } from './task.js';
+export { Task } from '@tiny/task';
 
 // Flow orchestration
-export { Flow, chainTasks, createFlow, createParallelFlow } from './flow.js';
+export { Flow, chainTasks, createFlow, createParallelFlow } from '@tiny/flow';
 
 // Parallel processing
 export { 
@@ -10,19 +10,19 @@ export {
   createParallelTask, 
   type ParallelTaskConfig, 
   type ParallelTaskResult 
-} from './parallel.js';
+} from '@tiny/parallel';
 
 // Logging
-export { logger, createTaskLogger, createFlowLogger } from './logger.js';
+export { logger, createTaskLogger, createFlowLogger } from '@tiny/logger';
 
 // Re-export types for convenience
-export type { ITask, SimpleTask, DataTransformTask } from './task.js';
+export type { ITask, SimpleTask, DataTransformTask } from '@tiny/task';
 
 // Import all components for the Tiny object
-import { Task } from './task.js';
-import { Flow, chainTasks, createFlow, createParallelFlow } from './flow.js';
-import { ParallelTask, createParallelTask } from './parallel.js';
-import { logger, createTaskLogger, createFlowLogger } from './logger.js';
+import { Task } from '@tiny/task';
+import { Flow, chainTasks, createFlow, createParallelFlow } from '@tiny/flow';
+import { ParallelTask, createParallelTask } from '@tiny/parallel';
+import { logger, createTaskLogger, createFlowLogger } from '@tiny/logger';
 
 // Create the Tiny object that bundles all main components
 const Tiny = {

@@ -1,7 +1,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
 import { Flow, chainTasks, createFlow, createParallelFlow } from '../dist/flow.js';
-import { Task } from '../dist/task.js';
+import { Task } from '@tiny/task';
 
 // Set log level to error for tests to reduce noise
 process.env.LOG_LEVEL = 'error';

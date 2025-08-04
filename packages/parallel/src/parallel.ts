@@ -1,5 +1,5 @@
-import { Task } from './task.js';
-import { createTaskLogger } from './logger.js';
+import { Task } from '@tiny/task';
+import { createTaskLogger } from '@tiny/core';
 
 // Interface for parallel task configuration
 export interface ParallelTaskConfig {
@@ -29,7 +29,6 @@ export abstract class ParallelTask<
   constructor(name: string, config: ParallelTaskConfig) {
     super(name);
     this.config = config;
-    this.logger = createTaskLogger(name);
   }
 
   /**
